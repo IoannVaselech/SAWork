@@ -1,0 +1,33 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Comments Parser</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+    <h1>YouTube Comments Parser</h1>
+    <div id="loading-indicator" style="display: none;">Loading... Please wait</div>
+    <form action="/" method="POST" onsubmit="showLoadingIndicator()">
+        <input type="text" name="video_url" placeholder="Enter YouTube Video URL">
+        <input type="submit" value="Get Comments">
+        <div id="loading-indicator" class="hidden">
+            Loading comments...
+        </div>
+    </form>
+    {% if file_name %}
+        <a href="{{ url_for('download_comments', file_name=file_name) }}" download>Download Comments</a>
+        
+    {% endif %}
+    <a href="{{ url_for('list_files') }}">Show All Files</a>
+
+        <script>
+            function showLoadingIndicator() {
+                var loadingIndicator = document.getElementById("loading-indicator");
+                loadingIndicator.style.display = "block";
+            }
+        </script>
+</body>
+</html>

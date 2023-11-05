@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Comments Parser - List</title>
+</head>
+<body>
+    <h1>List of Files</h1>
+    <ul>
+        {% for file_name in file_list %}
+            <li>
+                <a href="{{ url_for('download_comments', file_name=file_name) }}" download>{{ file_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+    <!-- Остальное содержимое страницы -->
+</body>
+</html>
